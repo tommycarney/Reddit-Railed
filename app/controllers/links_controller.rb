@@ -3,6 +3,7 @@ class LinksController < ApplicationController
 	end
 
 	def show
+		@link = Link.find(params.require(:id))
 	end
 
 	def new
@@ -18,6 +19,10 @@ class LinksController < ApplicationController
 	private
 
 	def link_params
+     params.require(:link).permit(:title, :url)
+    end
+
+    def link_params
      params.require(:link).permit(:title, :url)
     end
 
