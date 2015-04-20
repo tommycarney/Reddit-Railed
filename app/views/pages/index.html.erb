@@ -1,11 +1,15 @@
 <h2>Welcome to Reddit</h2>
 
-<ul>
+
 <% @links.each do |link| %>
-  <li><%= link_to link.title, link.url %></li>
-  <p><%= link_to "comments", link %></p>
+  <p><%= link_to link.title, link.url %>
+  <%= link_to "comments", link %>
+  <%= link_to "+", votes_path(:vote => {:link_id => link.id, :up => true}), :method => :post %>
+  <%= link_to "-", votes_path(:vote => {:link_id => link.id, :up => false}), :method => :post %>
+  Votes: <%= link.votes.where(:up => true).count - link.votes.where(:up => false).count %>
+</p>
  <% end %>
-</ul>
+
 <%= will_paginate @links %>
 
 <%= link_to "Add a new link", new_link_path %>
