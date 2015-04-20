@@ -11,12 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150420163636) do
+ActiveRecord::Schema.define(version: 20150420181655) do
 
   create_table "comments", force: :cascade do |t|
-    t.text    "message"
-    t.integer "user_id"
-    t.integer "link_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text     "message"
+    t.integer  "user_id"
+    t.integer  "link_id"
   end
 
   create_table "links", force: :cascade do |t|
@@ -44,5 +46,13 @@ ActiveRecord::Schema.define(version: 20150420163636) do
   end
 
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "votes", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "user_id"
+    t.integer  "link_id"
+    t.boolean  "up"
+  end
 
 end

@@ -1,10 +1,10 @@
-class CreateComments < ActiveRecord::Migration
+class CreateVote < ActiveRecord::Migration
   def change
-    create_table :comments do |t|
+    create_table :votes do |t|
     	t.timestamps null: false
-    	t.text :message
     	t.integer :user_id
     	t.integer :link_id
+    	t.boolean :up
     end
   end
 end

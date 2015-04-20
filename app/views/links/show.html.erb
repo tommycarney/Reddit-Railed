@@ -8,7 +8,7 @@
 <h2>Some Nasty Comments</h2>
 <div>
 <% @link.comments.each do |comment| %>
-  <p><%= comment.message %> by <%=</p>
+  <p><%= comment.message %> by <%= comment.user.username %> posted at <%= time_ago_in_words(comment.created_at) %></p>
 <% end %>
 </div>
 
