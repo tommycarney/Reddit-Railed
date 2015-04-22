@@ -13,6 +13,7 @@ class LinksController < ApplicationController
 
 	def create
 		 @link  = Link.new(link_params)
+		# @link.user_id = current_user.id
 		 @link.save
 		 redirect_to @link
     end
@@ -23,8 +24,5 @@ class LinksController < ApplicationController
      params.require(:link).permit(:title, :url)
     end
 
-    def link_params
-     params.require(:link).permit(:title, :url)
-    end
 
 end

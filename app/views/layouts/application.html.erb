@@ -43,8 +43,17 @@
 
 <%= flash_messages %>
 
-
+<div class="container">
 <%= yield %>
+
+<% if content_for?(:sidebar) %>
+  <div class="col-md-4">
+    <div class=""></div>
+    <h2>Sidebar</h2>
+    <%= yield :sidebar %>
+  </div>
+<% end %>
+</div>
 
 
 </body>
